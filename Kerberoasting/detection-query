@@ -1,0 +1,7 @@
+```splunk
+index=main EventCode=4769 host="Windows-Server" sourcetype=WinEventLog 
+|where Ticket_Encryption_Type="0x17" AND Service_Name!="*$"
+|eval Severity=case(Ticket_Encryption_Type="0x17", "High - Potential Kerberoasting")
+|rename Account_Name AS "Attacker_Account" , Service_Name AS "Target_Service" , Client_Address AS "IP_Attacker"
+|table _time , Attacker_Account,Target_Service,IP_Attacker,Ticket_Options
+```
