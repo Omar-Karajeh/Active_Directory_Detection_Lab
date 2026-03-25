@@ -1,4 +1,4 @@
 index=main host="Windows10-VM" EventCode=4624 Logon_Type=9 Logon_Process="seclogo"
-|rename Subject_Account_Name AS "Victim" , Source_Network_Address AS "IP_Address_Victim",New_Logon_Account_Name AS "Target" ,Logon_Process AS "Type_Attack"
+|rename Subject_Account_Name AS "Victim" , Source_Network_Address AS "IP_Address_Victim",Logon_Process AS "Type_Attack"
 |eval Severity="Critical - Pass The Hash"
-|table _time,Victim, IP_Address_Victim,Target,Type_Attack,Severity
+|table _time,Victim, IP_Address_Victim,Type_Attack,Severity
