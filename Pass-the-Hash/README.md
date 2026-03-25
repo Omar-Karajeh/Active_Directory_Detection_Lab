@@ -35,5 +35,3 @@ Pass-the-Hash allows an attacker to authenticate using an NTLM hash instead of t
 - Review all logon events for that account in last 24 hours
 - Check for lateral movement to other systems
 - Escalate to Incident Response Team — CRITICAL
-
----
