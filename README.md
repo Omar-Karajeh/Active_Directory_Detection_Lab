@@ -22,4 +22,3 @@ Each attack folder contains:
 - Attack description
 - IOCs (Indicators of Compromise)
 - Recommended response actions
-```
