@@ -16,9 +16,8 @@ logsource:
 detection:
     selection:
         EventID: 4769
-        Computer: 'Windows-Server'
         TicketEncryptionType: '0x17'
     filter_machine_accounts:
-        ServiceName|contains : '$'
+        ServiceName|contains: '$'
     condition: selection and not filter_machine_accounts
 level: high
