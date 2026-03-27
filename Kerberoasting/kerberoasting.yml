@@ -1,0 +1,24 @@
+title: Detection Kerberoasting
+id: a6ba8921-23ad-4e40-8894-667549d4db0d
+status: test
+author: Omar-Karajeh
+description: Detect where an attacker requests Kerberos Service Tickets (TGS) for accounts with Service Principal Names (SPNs) and attempts to crack them offline. The attack targets RC4 encryption (weaker than AES), making tickets vulnerable to brute-force attacks.
+references:
+    - https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-10/security/threat-protection/auditing/event-4769
+    - https://attack.mitre.org/techniques/T1558/003/
+date: 2026-03-24
+tags:
+    - attack.t1558.003
+    - attack.credential-access
+logsource:
+    product: windows
+    service: security
+detection:
+    selection:
+        EventID: 4769
+        Computer: 'Windows-Server'
+        TicketEncryptionType: '0x17'
+    filter_machine_accounts:
+        ServiceName|contains : '$'
+    condition: selection and not filter_machine_accounts
+level: high
